@@ -1,0 +1,18 @@
+<app-client-list [clients] = "clients" class="sidebarleft" (clientChanged)="handleClientChanged($event)"></app-client-list>
+<div class="main">
+    <app-selected-client *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>
+  <header>
+      <div *ngIf="lieuxSelectedClient">
+        <ul>
+          <li *ngFor =" let lieu of lieuxSelectedClient"><a href="">{{lieu.name}}/{{lieu.id}}</a></li>
+        </ul>
+
+      </div>
+  </header>
+
+  <div>
+    Hrere we will put some date or router for the selected lieu
+  </div>
+</div>
+
+<app-selected-client class="sidebarright" *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.sidebarleft{
+    float: left;
+    width: 25%;
+}
+.main{
+    float: left;
+    width: 50%;
+}
+
+.sidebarright{
+    float: left;
+    width: 25%;
+}

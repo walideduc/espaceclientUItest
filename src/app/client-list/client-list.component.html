@@ -1,0 +1,7 @@
+<nav>
+  <ul>
+    <li *ngFor="let client of clients" (click)="handleClientClick(client)"><a href="#">{{client.name}}</a></li>
+  </ul>
+</nav>
+
+
