@@ -1,18 +1,23 @@
-<app-client-list [clients] = "clients" class="sidebarleft" (clientChanged)="handleClientChanged($event)"></app-client-list>
-<div class="main">
-    <app-selected-client *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>
-  <header>
-      <div *ngIf="lieuxSelectedClient">
-        <ul>
-          <li *ngFor =" let lieu of lieuxSelectedClient"><a href="">{{lieu.name}}/{{lieu.id}}</a></li>
-        </ul>
+<div class="wrapper">
 
-      </div>
-  </header>
+    <app-client-list [clients]="clients" (clientChanged)="handleClientChanged($event)"></app-client-list>
 
-  <div>
-    Hrere we will put some date or router for the selected lieu
-  </div>
+
+    <div class="content">
+        <app-selected-client *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>
+        <div *ngIf="lieuxSelectedClient">
+            <ul>
+                <li *ngFor=" let lieu of lieuxSelectedClient" class="lieu">{{lieu.name}} --- {{lieu.id}}</li>
+            </ul>
+        </div>
+        <p>
+            Here we will put some data or router for the selected lieu and its indicators.
+        </p>
+
+        <app-selected-client class="top" *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>
+    </div>
+
+
 </div>
 
-<app-selected-client class="sidebarright" *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>
+

@@ -12,3 +12,33 @@
     float: left;
     width: 25%;
 }
+nav li{
+    display: inline;
+    list-style: none;
+    margin: 10px;
+}
+.lieu{
+    margin: 5px;
+    padding: 5px;
+    background-color: brown;
+    color: white;
+}
+.client{
+    margin: 5px;
+    padding: 5px;
+    background-color: green;
+    color: white;
+}
+.content{
+    margin-left: 100px;
+}
+
+.wrapper{
+    position: relative;
+}
+.top {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    border: 3px solid #73AD21;
+}

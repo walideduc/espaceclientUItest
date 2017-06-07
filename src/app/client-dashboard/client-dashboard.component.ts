@@ -20,7 +20,7 @@ export class ClientDashboardComponent implements OnInit {
       new Client(2 , 'client2', 'siret2'),
       new Client(3 , 'client3', 'siret3')
     ];
-    this.selectedClient = this.clients[0];
+    this.handleClientChanged(this.clients[0]);
   }
 
   handleClientChanged(client){
