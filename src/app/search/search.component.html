@@ -1,0 +1,18 @@
+<div>
+  <input type="text" [formControl]="term">
+  <div class="search_content">
+    <div *ngFor="let item of items ">
+      <div class="card">
+        <span [ngClass]="{'users': item._type == 'users', 'clients': item._type == 'clients'}">{{item._type}} :  {{item._id}}</span>
+        <div class="card_header">
+          <span class="score"> score {{item._score}}</span>
+        </div>
+        <div class="card_content">
+          <div *ngFor="let highligth of item.highlight "> {{highligth.key }} : <span [innerHTML]="highligth.value"></span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
