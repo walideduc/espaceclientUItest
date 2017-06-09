@@ -1,17 +1,19 @@
-<div>
-    <app-search></app-search>
-    <header>
-        <h1>Espace client UI</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="" [routerLink]="['/clients']">Gerer vos clients</a></li>
-            <li><a href="" [routerLink]="['/users']">Gerer vos collaborateur</a></li>
-        </ul>
-    </nav>
+<div (click)="body_clic()">
+    <div>
+        <app-search></app-search>
+        <header>
+            <h1>Espace client UI</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="" [routerLink]="['/clients']">Gerer vos clients</a></li>
+                <li><a href="" [routerLink]="['/users']">Gerer vos collaborateur</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        <section>
+            <router-outlet></router-outlet>
+        </section>
+    </main>
 </div>
-<main>
-    <section>
-        <router-outlet></router-outlet>
-    </section>
-</main>

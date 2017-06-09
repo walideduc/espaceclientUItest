@@ -16,13 +16,19 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.term
-        .valueChanges.debounceTime(400)
+        .valueChanges
+        .debounceTime(400)
         .distinctUntilChanged()
         .subscribe(
             term => this.elastic.serach(term).subscribe(
-                response => {this.items = response ; console.log(this.items[0])}
+                response => {this.items = response ; console.log(this.items[0])},
+                error => console.log(error)
             )
         );
+  }
+
+  public clear(){
+    this.items = [];
   }
 
 }
