@@ -8,6 +8,7 @@
             <ul>
                 <li><a href="" [routerLink]="['/clients']">Gerer vos clients</a></li>
                 <li><a href="" [routerLink]="['/users']">Gerer vos collaborateur</a></li>
+                <li><a href="" [routerLink]="['/login']">Login</a></li>
             </ul>
         </nav>
     </div>
@@ -15,5 +16,7 @@
         <section>
             <router-outlet></router-outlet>
         </section>
+
+        {{message}}
     </main>
 </div>

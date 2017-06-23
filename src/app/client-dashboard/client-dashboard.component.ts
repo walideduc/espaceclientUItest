@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Client} from "../client";
 import {Lieu} from "../lieu";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-client-dashboard',
@@ -12,7 +13,9 @@ export class ClientDashboardComponent implements OnInit {
   clients : Client[];
   selectedClient : Client;
   lieuxSelectedClient ;
-  constructor() { }
+
+
+  constructor(private messageService : MessageService) {}
 
   ngOnInit() {
     this.clients = [
@@ -50,5 +53,18 @@ export class ClientDashboardComponent implements OnInit {
     };
     this.lieuxSelectedClient = clientLieux[client.name];
   }
+
+
+  sendMessage() :void {
+    // send message to subscribers via observable subject
+    this.messageService.sendMessage('Message from ClientDashboardComponent Component to App Component!')
+  }
+
+  clearMessage(): void {
+    //
+    this.messageService.clearMessage();
+  }
+
+
 
 }
