@@ -7,13 +7,16 @@ import { SelectedClientComponent } from './selected-client/selected-client.compo
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component'
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./auth.guard";
-
+import {LoginWithImplicitComponent} from "./login-with-implicit/login-with-implicit.component";
+import {CallbackComponent} from "./callback/callback.component";
 
 const routes : Routes = [
     {path:'',pathMatch:'full',redirectTo:'clients'},
     {path:'clients',component:ClientDashboardComponent},
     {path:'users',component:UserDashboardComponent , canActivate:[AuthGuard]},
     {path:'login',component:LoginComponent},
+    {path:'login-with-implicit',component:LoginWithImplicitComponent},
+    {path:'callback',component:CallbackComponent},
     // {path:'users/:id',component:UserListComponent},
     // {path:'**',component:UserListComponent},
 
@@ -31,7 +34,11 @@ export const routableComponents = [
     UserDashboardComponent,
     ClientListComponent,
     LieuxListComponent,
-    SelectedClientComponent
+    SelectedClientComponent,
+    LoginComponent,
+    LoginWithImplicitComponent,
+    CallbackComponent,
+
 ];
 
 

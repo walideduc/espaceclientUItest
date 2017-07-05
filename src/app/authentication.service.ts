@@ -1,15 +1,18 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, Headers, URLSearchParams} from "@angular/http";
+import {Http, Response, Headers, URLSearchParams, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs";
+import 'rxjs/Rx';
 
 @Injectable()
 export class AuthenticationService {
 
     public token: string;
+    public userInfo: any;
 
     constructor(private http: Http) {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
+        this.userInfo = null;
     }
 
     login(username: string, password: string): Observable<boolean> {
@@ -36,8 +39,7 @@ export class AuthenticationService {
                 let token = response.json() &&  response.json().access_token ;
                 if (token){
                     //this.token = response.json().access_token;
-                    this.token = token;
-                    localStorage.setItem('currentUser',JSON.stringify({username: username,token:token}))
+                    this.setLocalStorage(username,token);
                     // return true to indicate successful login
                     return true;
 
@@ -48,14 +50,57 @@ export class AuthenticationService {
         }).catch(this.handleError);
 
     }
+
+    // loginWithImplicit(){
+    //     let root_url = 'http://local.ui.client.recyclage.veolia.fr/';
+    //     let urlSearchParms = new URLSearchParams();
+    //     urlSearchParms.append('client_id' , '4');
+    //     urlSearchParms.append('redirect_uri' , root_url+'callback');
+    //     urlSearchParms.append('response_type' , 'token');
+    //     let queryparms = urlSearchParms.toString();
+    //     return this.http.get('http://local.api.client.recyclage.veolia.fr/oauth/authorize?'+queryparms)
+    // }
+
+
     private handleError(error: Response){
        console.error(error);
         return Observable.throw(error.json() || 'Server error')
+    }
+
+    private setLocalStorage(username ,token){
+        console.log('In set local storage: currentUser = '+JSON.stringify({username: username,token:token}))
+        this.token = token;
+        localStorage.setItem('currentUser',JSON.stringify({username: username,token:token}))
     }
 
     logout():void {
         this.token = null ;
         localStorage.removeItem('currentUser');
     }
+
+    public setToken(token){
+        //console.log('In Auth service '+token)
+        console.log('In Auth service')
+        this.token = token;
+        return this.getConnectedUser();
+    }
+
+    public getConnectedUser(){
+        let headers = new Headers();
+        let options = new RequestOptions({headers:headers});
+        headers.append('Accept','application/json');
+        headers.append('Authorization','Bearer '+this.token);
+        console.log(headers);
+        return this.http.get('http://local.api.client.recyclage.veolia.fr/api/connected_user', options )
+            .map((response: Response) => {
+                this.userInfo = response.json();
+                console.log(this.userInfo)
+                this.setLocalStorage(this.userInfo.email,this.token);
+            })
+            .do(data => console.log('All:' + JSON.stringify(data)))
+            .catch(this.handleError).subscribe();
+    }
+
+
 
 }

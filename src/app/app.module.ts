@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import {ElasticsearchService} from "./elasticsearch.service";
 import {MessageService} from "./message.service";
 import {AuthGuard} from "./auth.guard";
-import { LoginComponent } from './login/login.component';
+
 import { FormsModule }   from '@angular/forms';
 import {AuthenticationService} from "./authentication.service";
 
@@ -19,7 +19,6 @@ import {AuthenticationService} from "./authentication.service";
     AppComponent,
     routableComponents,
     SearchComponent,
-    LoginComponent,
   ],
   imports: [
     AppRoutingModule,
