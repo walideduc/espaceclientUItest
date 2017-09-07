@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response, Headers, URLSearchParams, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs";
 import 'rxjs/Rx';
+import {environment} from "../environments/environment";
 
 @Injectable()
 export class AuthenticationService {
@@ -22,19 +23,20 @@ export class AuthenticationService {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         let urlSearchParms = new URLSearchParams();
         urlSearchParms.append('grant_type' , 'password');
-        urlSearchParms.append('client_id' , '4');
-        urlSearchParms.append('client_secret' , 'WHQE2kkcLHG3Zbf7nwLUNSrooUzkZkrXxgtjGvsu');
+        urlSearchParms.append('client_id' , environment.client_id);
+        urlSearchParms.append('client_secret' , environment.client_secret);
         urlSearchParms.append('username',username);
         urlSearchParms.append('password' , password);
         //urlSearchParms.append('username','stacy62@example.net');
         //urlSearchParms.append('password' , 'secret');
 
         let body = urlSearchParms.toString();
+        console.log(body);
 
 
 
 
-        return this.http.post('http://local.api.client.recyclage.veolia.fr/oauth/token', body , {headers:headers} ).map((response: Response) => {
+        return this.http.post(environment.login_url, body , {headers:headers} ).map((response: Response) => {
             console.log(response.json().access_token);
                 let token = response.json() &&  response.json().access_token ;
                 if (token){
@@ -91,7 +93,7 @@ export class AuthenticationService {
         headers.append('Accept','application/json');
         headers.append('Authorization','Bearer '+this.token);
         console.log(headers);
-        return this.http.get('http://local.api.client.recyclage.veolia.fr/api/connected_user', options )
+        return this.http.get(environment.connected_user_url, options )
             .map((response: Response) => {
                 this.userInfo = response.json();
                 console.log(this.userInfo)

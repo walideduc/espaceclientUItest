@@ -9,6 +9,7 @@ import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./auth.guard";
 import {LoginWithImplicitComponent} from "./login-with-implicit/login-with-implicit.component";
 import {CallbackComponent} from "./callback/callback.component";
+import {ErrorComponent} from "./error/error.component";
 
 const routes : Routes = [
     {path:'',pathMatch:'full',redirectTo:'clients'},
@@ -17,6 +18,7 @@ const routes : Routes = [
     {path:'login',component:LoginComponent},
     {path:'login-with-implicit',component:LoginWithImplicitComponent},
     {path:'callback',component:CallbackComponent},
+    {path:'error/:code',component:ErrorComponent},
     // {path:'users/:id',component:UserListComponent},
     // {path:'**',component:UserListComponent},
 
