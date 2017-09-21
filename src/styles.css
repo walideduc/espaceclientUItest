@@ -1,44 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
-.sidebarleft{
-    float: left;
-    width: 25%;
-}
-.main{
-    float: left;
-    width: 50%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.sidebarright{
-    float: left;
+body{
+    font-family: Caladea;
+    font-size: 18px;
+    background-color: #f1f1f1;
+}
+
+.container{
+    width: 1140px;
+    margin: auto;
+}
+
+.sidebar{
     width: 25%;
+    float: left;
 }
-nav li{
-    display: inline;
-    list-style: none;
-    margin: 10px;
+
+.sidebar ul {
+    list-style-type: none;
 }
-.lieu{
-    margin: 5px;
-    padding: 5px;
-    background-color: brown;
-    color: white;
+.sidebar a {
+    text-decoration: none;
+    margin-left: 10px;
 }
-.client{
-    margin: 5px;
-    padding: 5px;
-    background-color: green;
-    color: white;
+.sidebar ul l {
+    display: block;
+    margin-top: 200px;
+    margin-bottom: 200px;
 }
+
 .content{
-    margin-left: 100px;
+    width: 75%;
+    float: left;
 }
 
-.wrapper{
-    position: relative;
-}
-.top {
-    position: absolute;
-    top: 0px;
-    right: 0;
-    border: 3px solid #73AD21;
+h1{
+    color: green;
 }

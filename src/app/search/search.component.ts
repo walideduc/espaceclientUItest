@@ -20,8 +20,9 @@ export class SearchComponent implements OnInit {
         .debounceTime(400)
         .distinctUntilChanged()
         .subscribe(
-            term => this.elastic.serach(term).subscribe(
-                response => {this.items = response ; console.log(this.items[0])},
+            term => this.elastic.search(term).subscribe(
+                // response => {this.items = response ; console.log(this.items[0])},
+                response => {this.items = response.data ; console.log(response.data)},
                 error => console.log(error)
             )
         );

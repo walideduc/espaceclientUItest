@@ -1,25 +1,26 @@
-<div (click)="body_clic()">
-    <div>
-        <app-search></app-search>
-        <header>
-            <h1>Espace client UI</h1>
-        </header>
-        <nav>
+<header>
+    <h1>Espace client UI</h1>
+    <app-search></app-search>
+</header>
+    <div class="sidebar">
+        <nav class="nav1">
             <ul>
                 <li><a href="" [routerLink]="['/clients']">Gerer vos clients</a></li>
                 <li><a href="" [routerLink]="['/users']">Gerer vos collaborateur</a></li>
                 <li><a href="" [routerLink]="['/login']">Login</a></li>
                 <li><a href="" [routerLink]="['/login-with-implicit']">login-with-implicit</a></li>
-                <li><b>Hello</b></li>
+                <!--<li><b>Hello</b></li>-->
                 <!--<li><a href="" [routerLink]="['/callback']">callback</a></li>-->
             </ul>
         </nav>
     </div>
-    <main>
-        <section>
-            <router-outlet></router-outlet>
-        </section>
+    <div class="content">
+        <main>
+            <section>
+                <router-outlet></router-outlet>
+            </section>
 
-        {{message}}
-    </main>
-</div>
+            {{message}}
+        </main>
+    </div>
+

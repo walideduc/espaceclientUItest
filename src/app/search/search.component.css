@@ -1,26 +1,5 @@
-.card{
-    border: 1px solid white;
-    border-radius: 5px;
-    background-color: lightgray;
-    margin-bottom: 1px;
-}
-.search_content{
-    position: absolute;
-    top: 40px;
-    z-index: 1;
-}
-.users{
-    margin: 2px;
-    padding: 0px 10px;
-    background-color: blue;
-    color: white;
-}
-.clients{
-    margin: 2px;
-    padding: 0px 10px;
-    background-color: green;
-    color: white;
-}
-.score{
-    color: red;
+.container input{
+    display: block;
+    width: 100%;
+    margin: 20px 0px;
 }

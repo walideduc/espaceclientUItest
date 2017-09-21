@@ -3,6 +3,7 @@ import {Http, Response, Headers, URLSearchParams, RequestOptions} from "@angular
 import {Observable} from "rxjs";
 import 'rxjs/Rx';
 import {environment} from "../environments/environment";
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
@@ -10,7 +11,7 @@ export class AuthenticationService {
     public token: string;
     public userInfo: any;
 
-    constructor(private http: Http) {
+    constructor(private http: Http , private _router: Router) {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
         this.userInfo = null;
@@ -101,6 +102,14 @@ export class AuthenticationService {
             })
             .do(data => console.log('All:' + JSON.stringify(data)))
             .catch(this.handleError).subscribe();
+    }
+
+    public getCurrentUser(){
+        let currentUser = localStorage.getItem('currentUser');
+        if( currentUser == null){
+            this._router.navigate(['/login'])
+        }
+        return JSON.parse(currentUser);
     }
 
 

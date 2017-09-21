@@ -10,7 +10,7 @@ export const environment = {
   production: false,
   login_url : api_bas_url+'/oauth/token',
   client_id:'2',
-  client_secret:'S7yBRIQANYk36I6QJaLuuXRBYJLiRqQZxFlHPM6A',
+  client_secret:'J3WB432ZMupJhV8t11JrWUnr3WoDY77wnCNaR56y',
   connected_user_url: api_bas_url+'/api/v1/connected_user',
   spa_callback_url: spa_bas_url+'callback',
   login_with_google_url:api_bas_url+'/login/google',
