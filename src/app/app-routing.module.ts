@@ -10,16 +10,21 @@ import {AuthGuard} from "./auth.guard";
 import {LoginWithImplicitComponent} from "./login-with-implicit/login-with-implicit.component";
 import {CallbackComponent} from "./callback/callback.component";
 import {ErrorComponent} from "./error/error.component";
+import {UserComponent} from "./user/user.component";
+import {ClientComponent} from "./client/client.component";
+import {ExpandedSearchComponent} from "./expanded-search/expanded-search.component";
 
 const routes : Routes = [
     {path:'',pathMatch:'full',redirectTo:'clients'},
-    {path:'clients',component:ClientDashboardComponent},
+    {path:'clients',component:ClientDashboardComponent ,canActivate:[AuthGuard]},
     {path:'users',component:UserDashboardComponent , canActivate:[AuthGuard]},
     {path:'login',component:LoginComponent},
     {path:'login-with-implicit',component:LoginWithImplicitComponent},
     {path:'callback',component:CallbackComponent},
     {path:'error/:code',component:ErrorComponent},
-    // {path:'users/:id',component:UserListComponent},
+    {path:'user/:id',component:UserComponent},
+    {path:'client/:id',component:ClientComponent},
+    {path:'expanded-search/:query',component:ExpandedSearchComponent},
     // {path:'**',component:UserListComponent},
 
 ];
@@ -40,6 +45,9 @@ export const routableComponents = [
     LoginComponent,
     LoginWithImplicitComponent,
     CallbackComponent,
+    UserComponent,
+    ClientComponent,
+    ExpandedSearchComponent,
 
 ];
 

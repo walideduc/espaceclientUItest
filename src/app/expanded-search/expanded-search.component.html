@@ -1,0 +1,71 @@
+
+<div class="container">
+  <h4>Recherche élargie </h4>
+  <input type="text" [formControl]="term">
+
+  <div class="search_filters">
+    <span (click)="initFilters()" style="color: green">Initilaise filter</span>
+    <div>Filters : <span class="request_filter">{{filters['type']}}</span>
+         <div *ngIf="filters['modules']">
+           <div  *ngFor="let m of filters['modules']">Module : <span class="request_filter">{{m}}</span></div>
+         </div>
+    </div>
+    <div>Resultat : {{total}}</div>
+    <div class="filter" *ngIf="aggregations?.type.buckets.length">
+      <span>Type</span>
+      <ul>
+        <ng-container class="bucket" *ngFor="let bucket of aggregations?.type.buckets"  >
+          <li *ngIf="bucket.key=='client'" (click)="setFilters('type',bucket.key)" >{{bucket.key}} :  {{bucket.doc_count}}</li>
+        </ng-container>
+        <li class="bucket" *ngFor="let bucket of aggregations?.profile.buckets" (click)="setFilters('type',bucket.key)">
+          {{bucket.key}} :  {{bucket.doc_count}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="filter" *ngIf="aggregations?.modules.id.buckets.length">
+      <span>Modules:</span>
+      <ul>
+        <li class="bucket" *ngFor="let bucket of aggregations.modules.id.buckets" (click)="setFilters('modules',bucket.key)">
+          {{bucket.name}} :  {{bucket.doc_count}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="search_result">
+    <div *ngFor="let item of items " (click)="handleCardClick(item._type,item._source.id)">
+      <div class="card">
+        <span [ngClass]="{'user': item._type == 'user', 'client': item._type == 'client'}">{{item._type == 'client' ? 'Client' : 'User' }}</span><span
+              class="score">{{' score: ' + item._score}} </span>
+        <div class="card_header">
+
+          <div *ngIf="item._type == 'client'">
+            <!--<span class="key">enseigne: </span>-->
+            <span class="value">{{item._source.enseigne}}</span>,
+            <!--<span class="key">raison_sociale: </span>-->
+            <span class="value">{{item._source.raison_sociale}}</span>,
+            <!--<span class="key">siret: </span>-->
+            <span class="value">{{item._source.siret}}</span>
+          </div>
+          <div *ngIf="item._type == 'user'">
+            <!--<span class="key">first_name: </span>-->
+            <span class="value">{{item._source.first_name}}</span>
+            <!--<span class="key">last_name: </span>-->
+            <span class="value">{{item._source.last_name}}</span>
+          </div>
+        </div>
+        <div class="card_content">
+          <div *ngFor="let highligth of item.highlight ">
+            <span class="key"> {{highligth.key }} </span>
+            <span class="value" [innerHTML]="highligth.value"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+

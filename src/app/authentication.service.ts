@@ -104,12 +104,22 @@ export class AuthenticationService {
             .catch(this.handleError).subscribe();
     }
 
-    public getCurrentUser(){
+    private getCurrentUser(){
         let currentUser = localStorage.getItem('currentUser');
         if( currentUser == null){
             this._router.navigate(['/login'])
         }
         return JSON.parse(currentUser);
+    }
+
+    public getBaseHeaders() : Headers{
+        let currentUser = this.getCurrentUser();
+        let token = currentUser.token ;
+        console.log(token);
+        let headers = new Headers();
+        headers.append('Accept','application/json');
+        headers.append('Authorization','Bearer '+token);
+        return headers;
     }
 
 

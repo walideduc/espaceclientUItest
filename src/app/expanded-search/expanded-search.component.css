@@ -1,3 +1,22 @@
+h4{
+    margin-top: 20px;
+}
+.container input{
+    display: block;
+    width: 100%;
+    margin: 5px 0px;
+    border-radius: 5px;
+    padding: 5px;
+}
+.search_filters{
+    width: 20%;
+    float: left;
+}
+.search_result{
+    /*margin-left: 5px;*/
+    width: 80%;
+    float: left;
+}
 .card{
     width: 100%;
     margin: 20px 0px;
@@ -25,6 +44,9 @@
     font-size: 15px;
     font-weight: bold;
 }
+span b{
+    color: red;
+}
 .card_header{
     padding: 10px;
     border: 1px solid #88bfff;
@@ -39,4 +61,15 @@
     color: darkgray;
     font-size: 15px;
     font-weight: bold;
+}
+
+.search_filters .filter span{
+    color: green;
+}
+.search_filters .filter ul {
+    margin-left: 5px;
+    list-style-type: none;
+}
+.request_filter {
+    color: blue;
 }

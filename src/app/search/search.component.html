@@ -1,18 +1,30 @@
 <div class="container">
-  <input type="text" [formControl]="term">
-  <div class="search_content">
-    <div *ngFor="let item of items ">
-      <div class="card">
-        <span [ngClass]="{'users': item._type == 'users', 'clients': item._type == 'clients'}">{{item._type}} :  {{item._id}}</span>
-        <div class="card_header">
-          <span class="score"> score {{item._score}}</span>
+    <input type="text" [formControl]="term" (keyup.enter)="handleKeyPress(term)">
+    <div class="search_content">
+        <div *ngFor="let item of items " (click)="handleCardClick(item._type,item._source.id)">
+            <div class="card">
+                <span [ngClass]="{'user': item._type == 'user', 'client': item._type == 'client'}">{{item._type == 'client' ? 'Client' : 'User' }}</span><span
+                    class="score">{{' score: ' + item._score}} </span>
+                <div class="card_header">
+                    <div *ngFor="let highligth of item.highlight ">
+                        <span class="key"> {{highligth.key }} </span><span class="value" [innerHTML]="highligth.value"></span>
+                    </div>
+                </div>
+                <div class="card_content">
+                    <div *ngIf="item._type == 'client'">
+                        <span class="key">enseigne: </span><span class="value">{{item._source.enseigne}}</span>
+                        <span class="key">raison_sociale: </span><span
+                            class="value">{{item._source.raison_sociale}}</span>
+                        <span class="key">siret: </span><span class="value">{{item._source.siret}}</span>
+                    </div>
+                    <div *ngIf="item._type == 'user'">
+                        <span class="key">first_name: </span><span class="value">{{item._source.first_name}}</span>
+                        <span class="key">last_name: </span><span class="value">{{item._source.last_name}}</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="card_content">
-          <div *ngFor="let highligth of item.highlight "> {{highligth.key }} : <span [innerHTML]="highligth.value"></span></div>
-        </div>
-      </div>
 
     </div>
-  </div>
-
 </div>

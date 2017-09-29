@@ -1,23 +1,29 @@
-<div class="wrapper">
+<!--<div class="wrapper">-->
 
-    <app-client-list [clients]="clients" (clientChanged)="handleClientChanged($event)"></app-client-list>
-
-
-    <div class="content">
-        <app-selected-client *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>
-        <div *ngIf="lieuxSelectedClient">
-            <ul>
-                <li *ngFor=" let lieu of lieuxSelectedClient" class="lieu">{{lieu.name}} --- {{lieu.id}}</li>
-            </ul>
-        </div>
-        <p>
-            Here we will put some data or router for the selected lieu and its indicators.
-        </p>
-
-        <app-selected-client class="top" *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>
-    </div>
+    <!--<app-client-list [clients]="clients" (clientChanged)="handleClientChanged($event)"></app-client-list>-->
 
 
-</div>
+    <!--<div class="content">-->
+        <!--<app-selected-client *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>-->
+        <!--<div *ngIf="lieuxSelectedClient">-->
+            <!--<ul>-->
+                <!--<li *ngFor=" let lieu of lieuxSelectedClient" class="lieu">{{lieu.name}} -&#45;&#45; {{lieu.id}}</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--<p>-->
+            <!--Here we will put some data or router for the selected lieu and its indicators.-->
+        <!--</p>-->
+
+        <!--<app-selected-client class="top" *ngIf="selectedClient" [client]="selectedClient"></app-selected-client>-->
+    <!--</div>-->
+
+
+<!--</div>-->
+
+<app-search></app-search>
+<h2>Gestion des clients</h2>
+<p>
+    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</p>
 
 

@@ -7,6 +7,8 @@
 let api_bas_url = 'http://local.api.client.recyclage.veolia.fr';
 let spa_bas_url = 'http://local.ui.client.recyclage.veolia.fr/';
 export const environment = {
+  api_bas_url: api_bas_url,
+  search_url: api_bas_url+'/api/v1/search',
   production: false,
   login_url : api_bas_url+'/oauth/token',
   client_id:'2',

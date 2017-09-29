@@ -13,6 +13,7 @@ import {AuthGuard} from "./auth.guard";
 import { FormsModule }   from '@angular/forms';
 import {AuthenticationService} from "./authentication.service";
 import { ErrorComponent } from './error/error.component';
+import { ExpandedSearchComponent } from './expanded-search/expanded-search.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ErrorComponent } from './error/error.component';
     routableComponents,
     SearchComponent,
     ErrorComponent,
+    ExpandedSearchComponent,
   ],
   imports: [
     AppRoutingModule,
